@@ -16,6 +16,9 @@
                     <li> <a href="/berita" class="smoothScroll"> Berita</a></li>
                     <li> <a href="/jadwal" class="smoothScroll"> Jadwal</a></li>
                     <li> <a href="/saran" class="smoothScroll"> Saran</a></li>
+                    <li> <a href="/dashboard" class="smoothScroll"> Dashboard</a></li>
+
+                    <li> <a href="#" class="smoothScroll">Hello, nama</a></li>
             </div>
             <!--/.nav-collapse -->
         </div>
