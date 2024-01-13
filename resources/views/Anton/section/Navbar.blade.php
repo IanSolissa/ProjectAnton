@@ -11,11 +11,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="?module=home" class="smoothScroll">Home</a></li>
-                    <li> <a href="?module=profil" class="smoothScroll">Tim</a></li>
-                    <li> <a href="?module=berita" class="smoothScroll"> Berita</a></li>
-                    <li> <a href="?module=agenda" class="smoothScroll"> Jadwal</a></li>
-                    <li> <a href="?module=saran" class="smoothScroll"> Saran</a></li>
+                    <li><a href="/" class="smoothScroll">Home</a></li>
+                    <li> <a href="/tim" class="smoothScroll">Tim</a></li>
+                    <li> <a href="/berita" class="smoothScroll"> Berita</a></li>
+                    <li> <a href="/jadwal" class="smoothScroll"> Jadwal</a></li>
+                    <li> <a href="/saran" class="smoothScroll"> Saran</a></li>
             </div>
             <!--/.nav-collapse -->
         </div>

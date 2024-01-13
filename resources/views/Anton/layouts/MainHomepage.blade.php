@@ -27,6 +27,10 @@
     @include('Anton.section.Navbar')
     <main>
         @yield('Content1')
+        @yield('Content2')
+        @yield('Content3')
+        @yield('Content4')
+        @yield('Content5')
     </main>
     @include('Anton.section.footer')
 

@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\BeritapageController;
+use App\Http\Controllers\JadwalpageController;
 use App\Http\Controllers\LandingpageController;
+use App\Http\Controllers\SaranpageController;
+use App\Http\Controllers\TimpageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::resource('/', LandingpageController::class);
+Route::resource('/tim', TimpageController::class);
+Route::resource('/berita', BeritapageController::class);
+Route::resource('/jadwal', JadwalpageController::class);
+Route::resource('/saran', SaranpageController::class);
 
 require __DIR__.'/auth.php';

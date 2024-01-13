@@ -6,25 +6,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 
-class LandingpageController extends Controller
+class BeritapageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
         $tanggal= Carbon::now();
         // ->format('d-m-Y');
 
-$tanggal2=new \DateTime('now');
+    $tanggal2=new \DateTime('now');
 
-$tanggal=\Carbon\Carbon::parse($tanggal)    ;
+    $tanggal=\Carbon\Carbon::parse($tanggal)    ;
 
         // $tanggal=$tanggal->toDateTimeString();
-        return view('Anton.layouts.Homepage',[
+        return view('Anton.layouts.Beritapage',[
             'tanggal'=>$tanggal,
         ]);
+
     }
 
     /**
