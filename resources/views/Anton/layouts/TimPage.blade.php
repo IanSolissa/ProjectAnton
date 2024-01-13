@@ -19,16 +19,15 @@
 </section><!-- section -->
 <br>
 <div class="container" id="about" name="about">
-    <div class="row white">
-        <br>
+    @foreach ($Data as $data)
 
-        <img border=2 src='admin/admin/profil/foto/aelogo.png' border=0 width=300 height=200>
-        <br>
-        <strong>
-            <a href='?module=detailprofil&id=$r[id_profil]'>judul_profil</a>
-        </strong>
-        <p> </p>
+    <div class='fl_right col-sm-4'>
+        <img border=2 src='/admin/admin/profil/foto/{{ $data->fupload}}' border=0 width=300 height=200>
+        <br><strong><a href='/tim/{{ $data->id }}'>{{ $data->judul_profil }}</a></strong>
+
     </div>
+    @endforeach
+
 </div><!-- row -->
 </div><!-- container -->
 

@@ -16,9 +16,11 @@
                     <li> <a href="/berita" class="smoothScroll"> Berita</a></li>
                     <li> <a href="/jadwal" class="smoothScroll"> Jadwal</a></li>
                     <li> <a href="/saran" class="smoothScroll"> Saran</a></li>
-                    <li> <a href="/dashboard" class="smoothScroll"> Dashboard</a></li>
+                    <li> <a href="/dashboard/login" class="smoothScroll"> Dashboard</a></li>
+                    @auth
 
-                    <li> <a href="#" class="smoothScroll">Hello, nama</a></li>
+                    <li> <a href="#" class="smoothScroll">Hello, {{ auth()->user()->email }}</a></li>
+                    @endauth
             </div>
             <!--/.nav-collapse -->
         </div>

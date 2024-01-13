@@ -1,45 +1,60 @@
 @extends('Anton.layouts.MainHomepage')
 @section('Content1')
 
+@if($Data->count()<7) </div>
 
-<div id="headerwrap" id="home" name="home">
-
-    <header style="position: relative; top: 370px; left:100pk;">
-        <p style="color:yellow">
-            <marquee>INFO SEPUTAR MOBILE LEGENDS </marquee>
-        </p>
-
-    </header>
-</div>
-<!-- /headerwrap -->
-<div id="greywrap">
-    <p>BERITA UTAMA</p>
-
-
-    {{-- card --}}
-    <div class='fl_right col-sm-4'>
-        <img border=2 src='/admin/admin/berita/foto/donkey.jpeg' border=0 width=300 height=200>
-        <br><strong><a href='?module=readmore&id=$r[id_berita]'>Judul</a></strong>
-        <p><strong>Tanggal</strong> | <strong>JAM</strong></p>
-        ".excerpts." .....<a href='?module=readmore&id=$r[id_berita]'>Read More</a> </p>
-    </div>
-    <div class='fl_right col-sm-4'>
-        <img border=2 src='/admin/admin/berita/foto/donkey.jpeg' border=0 width=300 height=200>
-        <br><strong><a href='?module=readmore&id=$r[id_berita]'>Judul</a></strong>
-        <p><strong>Tanggal</strong> | <strong>JAM</strong></p>
-        ".excerpts." .....<a href='?module=readmore&id=$r[id_berita]'>Read More</a> </p>
-    </div>
-    <div class='fl_right col-sm-4'>
-        <img border=2 src='/admin/admin/berita/foto/donkey.jpeg' border=0 width=300 height=200>
-        <br><strong><a href='?module=readmore&id=$r[id_berita]'>Judul</a></strong>
-        <p><strong>Tanggal</strong> | <strong>JAM</strong></p>
-        ".excerpts." .....<a href='?module=readmore&id=$r[id_berita]'>Read More</a> </p>
     </div>
 
+    </div>
 
-    <div class="row" class='fl_right col-sm-4'>
+    <section class="section-divider textdivider divider6">
+        <div class="container">
+            <br />
+            <br />
+            <br>
+            <br>
+            <p><b>
+                    <h2 style="color:#fff000;">
+                        <marquee>Berita Seputar Dunia Mobile Legend</marquee><b>
+                    </h2>
+            </p>
+        </div><!-- container -->
+    </section><!-- section -->
+    </br>
 
-    </div><!-- row -->
-</div><!-- greywrap -->
+    <!-- /row -->
+    <br>
+    <br>
+    <!-- /row -->
+    <!-- /container -->
 
-@endsection
+    <div class="wrapper">
+        <div class="container">
+            <div class="content">
+                <div id="featured_slide">
+
+                    <div>
+                        @foreach ($Data as $data)
+
+                        <div class='fl_right col-sm-4'>
+                            <img border=2 src='/admin/admin/berita/foto/{{ $data->fupload}}' border=0 width=300
+                                height=200>
+                            <br><strong><a href='?module=readmore&id=$r[id_berita]'>{{ $data->judul }}</a></strong>
+                            <p><strong>{{ $data->tanggal }}</strong> | <strong>{{ $data->jam }}</strong></p>
+                            <p> {!! Str::limit($data->isi,25) !!} <a href='/berita/{{ $data->id }}'>Read
+                                    More</a> </p>
+                        </div>
+
+                        @endforeach
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    @else
+    @endif
+    @endsection

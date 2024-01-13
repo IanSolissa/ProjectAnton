@@ -13,7 +13,8 @@
             <td>&nbsp;</td>
             <td>
                 <p align="left">
-                <form action="?page=proses_agenda" method="post" enctype="multipart/form-data">
+                <form action="/dashboard/jadwal" method="post" enctype="multipart/form-data">
+                    @csrf
                     <table width="383" border="0">
 
                         <tr>

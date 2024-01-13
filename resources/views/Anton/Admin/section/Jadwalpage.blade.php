@@ -25,27 +25,49 @@
                         <th><small>Gambar</small></th>
                         <th><small>AKSI</small></th>
                     </tr>
+
+                    @foreach ($data as $Data)
                     <tr bgcolor="#E4E4E4">
+
                         <td><small>
+                                {{ $Data->id }}
+                            </small></td>
+                        <td><small>
+                                {{ $Data->username }}
 
                             </small></td>
                         <td><small>
+                                {{ $Data->judul_agenda }}
 
                             </small></td>
                         <td><small>
+                                {{ $Data->isi_agenda }}
 
                             </small></td>
                         <td><small>
+                                {{ $Data->tanggal_agenda }}
 
                             </small></td>
-                        <td><small>
+                        <td><small><img src="/admin/admin/agenda/foto/{{$Data->fupload }}" height="30"
+                                    width="30"></small></td>
+                        <td>
+                            <small>
 
-                            </small></td>
-                        <td><small><img src="agenda/foto/" height="30" width="30"></small></td>
-                        <td><small><a href="?page=hapus_agenda&id="
-                                    onClick="return confirm('Apakah Anda ingin menghapus data ?')">
-                                    Hapus </a> | <a href="?page=edit_agenda&id=">Edit</a> </small></td>
+                                <form action="/dashboard/jadwal/{{ $Data->id }}" method="post"
+                                    enctype="multipart/form-data">
+                                    @method('delete')
+                                    @csrf
+                                    <button type=" submit" href="/dashboard/jadwal/{{ $Data->id }}"
+                                        onClick="return confirm('Apakah Anda ingin menghapus data ?')">
+                                        Hapus </button>
+                                </form>
+
+
+                                | <a href="/dashboard/jadwal/{{ $Data->id }}/edit">Edit</a>
+                            </small>
+                        </td>
                     </tr>
+                    @endforeach
                 </table>
                 </p>
             </td>

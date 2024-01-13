@@ -62,10 +62,14 @@
                             <td bgcolor="#00006A"><a href="/dashboard/tim"><span class="style1">- Input TIM</span></a>
                             </td>
                         </tr>
+                        <tr>
+                            <td bgcolor="#00006A"><a href="/"><span class="style1">Homepage</span></a>
+                            </td>
+                        </tr>
 
 
                         <tr>
-                            <td bgcolor="#000048"><span class="style1"><a href="" onClick="logout()"><strong>-
+                            <td bgcolor="#000048"><span class="style1"><a href="/logout" onClick="logout()"><strong>-
                                             Logout</strong></a></span></td>
                         </tr>
                     </table>
@@ -79,6 +83,10 @@
                     @yield('Input-berita')
                     @yield('Input-tim')
                     @yield('Input-jadwal')
+
+                    @yield('Edit-berita')
+                    @yield('Edit-jadwal')
+                    @yield('Edit-tim')
 
                 </main>
 

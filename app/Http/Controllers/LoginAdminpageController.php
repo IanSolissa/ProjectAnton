@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LoginAdminpageController extends Controller
 {
@@ -27,7 +29,17 @@ class LoginAdminpageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credentials=$request->validate([
+            'email'=>'required',
+            'password'=>'required',
+        ]);
+        // dd($request);
+        // dd('sad');
+           if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard/landingpage');
+           }
+           return back()->with("failed","login tidak berhasil");
     }
 
     /**

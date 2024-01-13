@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\Berita;
 
 class LandingpageController extends Controller
 {
@@ -14,17 +15,19 @@ class LandingpageController extends Controller
     public function index()
     {
 
-        $tanggal= Carbon::now();
-        // ->format('d-m-Y');
+    $tanggal= Carbon::now();
+    // ->format('d-m-Y');
 
 $tanggal2=new \DateTime('now');
 
 $tanggal=\Carbon\Carbon::parse($tanggal)    ;
 
-        // $tanggal=$tanggal->toDateTimeString();
-        return view('Anton.layouts.Homepage',[
-            'tanggal'=>$tanggal,
-        ]);
+    // $tanggal=$tanggal->toDateTimeString();
+    return view('Anton.layouts.Homepage',[
+        'tanggal'=>$tanggal,
+        'Data'=>Berita::all()
+        // 'data'=>Berita::all()
+    ]);
     }
 
     /**

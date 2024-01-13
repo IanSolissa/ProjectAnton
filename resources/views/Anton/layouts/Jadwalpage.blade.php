@@ -42,14 +42,14 @@
 
                 <div>
 
-                    <div class='fl_right col-sm-4'>
-                        <img border=2 src='admin/admin/agenda/foto/$r[gambar_agenda]' border=0 width=300 height=200>
-                        <br>
-                        <strong><a href='?module=detail&id=$r[id_agenda]'>$r[judul_agenda].</a></strong>
-                        <p><strong>$r[tanggal_agenda]</strong></p>
-                        <p> </p>
-                    </div>
+                    @foreach ($Data as $data )
 
+                    <div class='fl_right col-sm-4'>
+                        <img border=2 src='/admin/admin/agenda/foto/{{ $data->fupload}}' border=0 width=300 height=200>
+                        <br><strong><a href='/jadwal/{{ $data->id }}'>{{ $data->judul_agenda }}</a></strong>
+                        <p><strong>{{ $data->tanggal_agenda }}</strong>
+                    </div>
+                    @endforeach
 
                 </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tim;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,7 @@ class TimpageController extends Controller
     {
         $tanggal= Carbon::now();
         // ->format('d-m-Y');
-
+        $Berita=Tim::all();
 $tanggal2=new \DateTime('now');
 
 $tanggal=\Carbon\Carbon::parse($tanggal)    ;
@@ -23,6 +24,7 @@ $tanggal=\Carbon\Carbon::parse($tanggal)    ;
         // $tanggal=$tanggal->toDateTimeString();
         return view('Anton.layouts.TimPage',[
             'tanggal'=>$tanggal,
+            'Data'=>$Berita
         ]);
 
     }
@@ -48,7 +50,14 @@ $tanggal=\Carbon\Carbon::parse($tanggal)    ;
      */
     public function show(string $id)
     {
-        //
+        $tanggal= Carbon::now();
+
+
+$tanggal=\Carbon\Carbon::parse($tanggal)    ;
+        return view('Anton.layouts.Heroposttim',[
+            'tanggal'=>$tanggal,
+            'data'=>Tim::find($id)
+        ]);
     }
 
     /**

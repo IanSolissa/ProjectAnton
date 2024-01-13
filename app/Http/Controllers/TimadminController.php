@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+use App\Models\Tim;
 
 class TimadminController extends Controller
 {
@@ -11,7 +15,10 @@ class TimadminController extends Controller
      */
     public function index()
     {
-       return view('Anton.Admin.section.Timpage');
+        $Tim=Tim::all();
+       return view('Anton.Admin.section.Timpage',[
+        'data'=>$Tim,
+       ]);
     }
 
     /**
@@ -27,7 +34,26 @@ class TimadminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation=$request->validate([
+
+            'judul_profil'=>'required',
+            'isi_profil'=>'required',
+            'fupload'=>'required',
+        ]);
+        if($request->file('fupload'))
+        {
+
+            $postimage=$request->file('fupload');
+            $extension=$postimage->extension();
+
+            $final =Carbon::now()->format('y-m-d-h-s') . '.' . $extension;
+            $postimage->move(public_path('admin/admin/profil/foto/'),$final);
+            $validation['fupload']=$final;
+            Tim::create($validation);
+
+
+           return redirect()->back();
+           }
     }
 
     /**
@@ -43,7 +69,11 @@ class TimadminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        return view('Anton.Admin.section.EditTimpage',[
+            'Data'=>Tim::find($id),
+        ]);
+
     }
 
     /**
@@ -51,7 +81,26 @@ class TimadminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validation=$request->validate([
+
+            'judul_profil'=>'required',
+            'isi_profil'=>'required',
+            'fupload'=>'required',
+        ]);
+        if($request->file('fupload'))
+        {
+
+            $postimage=$request->file('fupload');
+            $extension=$postimage->extension();
+
+            $final =Carbon::now()->format('y-m-d-h-s') . '.' . $extension;
+            $postimage->move(public_path('admin/admin/profil/foto/'),$final);
+            $validation['fupload']=$final;
+            Tim::where('id',$id)->update($validation);
+
+
+           return redirect('/dashboard/tim');
+           }
     }
 
     /**
@@ -59,6 +108,7 @@ class TimadminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Tim::destroy($id);
+        return redirect('/dashboard/tim');
     }
 }

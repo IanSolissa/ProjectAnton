@@ -26,33 +26,57 @@
                         <th><small>Gambar</small></th>
                         <th><small>AKSI</small></th>
                     </tr>
+                    @foreach ($data as $Data)
                     <tr bgcolor="#E4E4E4">
+
                         <td><small>
+                                {{ $Data->id }}
+                            </small></td>
+                        <td><small>
+                                {{ $Data->username }}
+                            </small></td>
+                        <td><small>
+                                {{ $Data->kategori }}
+                            </small></td>
+                        <td><small>
+                                {{ $Data->judul }}
 
                             </small></td>
                         <td><small>
+                                {{ $Data->isi }}
 
                             </small></td>
                         <td><small>
+                                {{ $Data->tanggal }}
 
                             </small></td>
                         <td><small>
+                                {{ $Data->jam }}
 
                             </small></td>
-                        <td><small>
-
-                            </small></td>
-                        <td><small>
-
-                            </small></td>
-                        <td><small>
-
-                            </small></td>
-                        <td><small><img src="/admin/admin/berita/foto/btr.jpeg" height="30" width="30"></small>
+                        <td><small><img src="/admin/admin/berita/foto/{{ $Data->fupload }}
+                            " height="30" width="30"></small>
                         </td>
-                        <td><small><a href="" onClick="return confirm('Apakah Anda ingin menghapus data ?')">
-                                    Hapus </a> | <a href="">Edit</a> </small></td>
+
+                        <td>
+                            <small>
+
+                                <form action="/dashboard/berita/{{ $Data->id }}" method="post"
+                                    enctype="multipart/form-data">
+                                    @method('delete')
+                                    @csrf
+                                    <button type=" submit" href="/dashboard/berita/{{ $Data->id }}"
+                                        onClick="return confirm('Apakah Anda ingin menghapus data ?')">
+                                        Hapus </button>
+                                </form>
+
+
+                                | <a href="/dashboard/berita/{{ $Data->id }}/edit">Edit</a>
+                            </small>
+                        </td>
+
                     </tr>
+                    @endforeach
                 </table>
                 </p>
             </td>

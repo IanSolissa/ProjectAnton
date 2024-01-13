@@ -31,16 +31,15 @@
     <section class="container">
         <div id="login" class="tab-pane active"><br>
             <h1>Login Ke Sistem </h1>
-            <form method="post" action="/dashboard">
+            <form action="/dashboard/login/" method="post">
                 @csrf
-                <p><input type="text" name="user" value="" placeholder="Username"></p>
-                <p><input type="password" name="pass" value="" placeholder="Password"></p>
+                <p><input type="text" name="email" value="" placeholder="Username"></p>
+                <p><input type="password" name="password" value="" placeholder="Password"></p>
                 <p class="remember_me">
                     <label>
                     </label>
                 </p>
-                <p class="submit"><input type="submit" name="commit" value="Login"></p>
-
+                <button type="submit">Login</button>
             </form>
             <br>
             <center>

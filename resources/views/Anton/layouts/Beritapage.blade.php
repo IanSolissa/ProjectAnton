@@ -33,14 +33,17 @@
             <div id="featured_slide">
 
                 <div>
+                    @foreach ($Data as $data)
 
                     <div class='fl_right col-sm-4'>
-                        <img border=2 src='/admin/admin/berita/foto/btr.jpeg' border=0 width=300 height=200>
-                        <br><strong><a href='?module=readmore&id=$r[id_berita]'>$r[judul].</a></strong>
-                        <p><strong>$r[tanggal]</strong> | <strong>$r[jam]</strong></p>
-                        <p> " . substr($r['isi'], 0, 100) . " .....<a href='?module=readmore&id=$r[id_berita]'>Read
+                        <img border=2 src='/admin/admin/berita/foto/{{ $data->fupload}}' border=0 width=300 height=200>
+                        <br><strong><a href='?module=readmore&id=$r[id_berita]'>{{ $data->judul }}</a></strong>
+                        <p><strong>{{ $data->tanggal }}</strong> | <strong>{{ $data->jam }}</strong></p>
+                        <p> {!! Str::limit($data->isi,25) !!} <a href='/berita/{{ $data->id }}'>Read
                                 More</a> </p>
                     </div>
+
+                    @endforeach
                 </div>
 
             </div>

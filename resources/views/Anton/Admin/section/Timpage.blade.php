@@ -23,21 +23,44 @@
                         <th><small>Gambar</small></th>
                         <th><small>AKSI</small></th>
                     </tr>
+
+                    @foreach ($data as $Data)
                     <tr bgcolor="#E4E4E4">
+
                         <td><small>
+                                {{ $Data->id }}
 
                             </small></td>
                         <td><small>
+                                {{ $Data->judul_profil }}
 
                             </small></td>
                         <td><small>
+                                {{ $Data->isi_profil }}
 
                             </small></td>
-                        <td><small><img src="profil/foto/" height="30" width="30"></small></td>
-                        <td><small><a href="?page=hapus_profil&id="
-                                    onClick="return confirm('Apakah Anda ingin menghapus data ?')">
-                                    Hapus </a> | <a href="?page=edit_profil&id=">Edit</a> </small></td>
+                        <td><small><img src="/admin/admin/profil/foto/{{ $Data->fupload }}
+                            " height="30" width="30"></small></td>
+
+                        <td>
+                            <small>
+
+                                <form action="/dashboard/tim/{{ $Data->id }}" method="post"
+                                    enctype="multipart/form-data">
+                                    @method('delete')
+                                    @csrf
+                                    <button type=" submit" href="/dashboard/tim/{{ $Data->id }}"
+                                        onClick="return confirm('Apakah Anda ingin menghapus data ?')">
+                                        Hapus </button>
+                                </form>
+
+
+                                | <a href="/dashboard/tim/{{ $Data->id }}/edit">Edit</a>
+                            </small>
+                        </td>
+
                     </tr>
+                    @endforeach
                 </table>
                 </p>
             </td>

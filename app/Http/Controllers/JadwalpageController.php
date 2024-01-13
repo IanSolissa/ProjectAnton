@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\Jadwal;
 
 class JadwalpageController extends Controller
 {
@@ -15,6 +16,7 @@ class JadwalpageController extends Controller
     {
         $tanggal= Carbon::now();
         // ->format('d-m-Y');
+        $Berita=Jadwal::all();
 
     $tanggal2=new \DateTime('now');
 
@@ -23,6 +25,7 @@ class JadwalpageController extends Controller
         // $tanggal=$tanggal->toDateTimeString();
         return view('Anton.layouts.Jadwalpage',[
             'tanggal'=>$tanggal,
+            'Data'=>$Berita
         ]);
 
     }
@@ -48,7 +51,13 @@ class JadwalpageController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $tanggal= Carbon::now();
+        // ->format('d-m-Y');
+    $tanggal=\Carbon\Carbon::parse($tanggal)    ;
+        return view('Anton.layouts.HeropostJadwal',[
+            'data'=>Jadwal::find($id),
+            'tanggal'=>$tanggal
+                    ]);
     }
 
     /**
@@ -56,7 +65,10 @@ class JadwalpageController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+
+
+
     }
 
     /**

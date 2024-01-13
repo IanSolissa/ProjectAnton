@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
@@ -19,10 +20,11 @@ class BeritapageController extends Controller
     $tanggal2=new \DateTime('now');
 
     $tanggal=\Carbon\Carbon::parse($tanggal)    ;
-
+    $Berita=Berita::all();
         // $tanggal=$tanggal->toDateTimeString();
         return view('Anton.layouts.Beritapage',[
             'tanggal'=>$tanggal,
+            'Data'=>$Berita
         ]);
 
     }
@@ -48,7 +50,16 @@ class BeritapageController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $tanggal= Carbon::now();
+        // ->format('d-m-Y');
+    $tanggal=\Carbon\Carbon::parse($tanggal)    ;
+
+        return view('Anton.layouts.Heropost',[
+            'data'=>Berita::find($id),
+            'tanggal'=>$tanggal
+                    ]);
+
+
     }
 
     /**

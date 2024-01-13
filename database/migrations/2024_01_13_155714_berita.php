@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Berita', function (Blueprint $table) {
+        Schema::create('Beritas', function (Blueprint $table) {
             $table->id();
             $table->string('username');
             $table->string('kategori');
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('fupload');
             $table->text('isi');
             $table->timestamp('tanggal')->nullable()->default(NULL);
-            $table->timestamp('jam')->nullable()->default(NULL);
+            $table->string('jam')->nullable()->default(NULL);
             // $table->timestamp('jam')->default(NULL);
 
             $table->timestamps();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Berita');
+        Schema::dropIfExists('Beritas');
     }
 };

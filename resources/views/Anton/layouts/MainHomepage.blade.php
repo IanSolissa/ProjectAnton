@@ -31,6 +31,11 @@
         @yield('Content3')
         @yield('Content4')
         @yield('Content5')
+
+        @yield('Hero-berita')
+        @yield('Hero-jadwal')
+        @yield('Hero-tim')
+
     </main>
     @include('Anton.section.footer')
 

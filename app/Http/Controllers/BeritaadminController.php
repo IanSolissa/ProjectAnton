@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
+use Carbon\Carbon;
+use App\Models\Berita;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BeritaadminController extends Controller
 {
@@ -11,7 +15,10 @@ class BeritaadminController extends Controller
      */
     public function index()
     {
-        return view('Anton.Admin.section.Beritapage');
+        $Berita=Berita::all();
+        return view('Anton.Admin.section.Beritapage',[
+         'data'=>$Berita,
+        ]);
     }
 
     /**
@@ -27,7 +34,31 @@ class BeritaadminController extends Controller
      */
     public function store(Request $request)
     {
-       dd("masuk");
+        $validation=$request->validate([
+            'username'=>'required',
+            'kategori'=>'required',
+            'judul'=>'required',
+            'isi'=>'required',
+            'tanggal'=>'required',
+            'jam'=>'required',
+            'fupload'=>'required',
+        ]);
+        if($request->file('fupload'))
+        {
+
+            $postimage=$request->file('fupload');
+            $extension=$postimage->extension();
+
+            $final =Carbon::now()->format('y-m-d-h-s') . '.' . $extension;
+            $postimage->move(public_path('admin/admin/berita/foto/'),$final);
+            $validation['fupload']=$final;
+            Berita::create($validation);
+
+            return redirect()->back();
+            // dd("sad");
+       }
+
+    //    dd("masuk");
     }
 
     /**
@@ -35,7 +66,6 @@ class BeritaadminController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -43,7 +73,12 @@ class BeritaadminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // dd($id);
+        // dd(Berita::find($id));
+        return view('Anton.Admin.section.Editberitapage',[
+            'Data'=>Berita::find($id),
+        ]);
+
     }
 
     /**
@@ -51,7 +86,28 @@ class BeritaadminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validation=$request->validate([
+            'username'=>'required',
+            'kategori'=>'required',
+            'judul'=>'required',
+            'isi'=>'required',
+            'tanggal'=>'required',
+            'jam'=>'required',
+            'fupload'=>'required',
+        ]);
+        if($request->file('fupload'))
+        {
+
+            $postimage=$request->file('fupload');
+            $extension=$postimage->extension();
+
+            $final =Carbon::now()->format('y-m-d-h-s') . '.' . $extension;
+            $postimage->move(public_path('admin/admin/berita/foto/'),$final);
+            $validation['fupload']=$final;
+            Berita::where('id', $id)->update($validation);
+            return redirect('/dashboard/berita');
+            // dd("sad");
+       }
     }
 
     /**
@@ -59,6 +115,8 @@ class BeritaadminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        Berita::destroy($id);
+        return redirect('/dashboard/berita');
     }
 }
